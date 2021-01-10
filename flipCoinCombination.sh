@@ -121,3 +121,85 @@ percentage[Tail_Head_Tail]=$( echo ${count[6]} ${count[0]} |  awk '{print $1/$2*
 percentage[Tail_Tail_Head]=$( echo ${count[7]} ${count[0]} |  awk '{print $1/$2*100}'  )
 percentage[Tail_Tail_Tail]=$( echo ${count[8]} ${count[0]} |  awk '{print $1/$2*100}'  )
 
+
+index=1
+record=$index
+number=${count[index]}
+
+while [[ $index -le 7 ]]
+do
+        if [[ $number -lt ${count[index+1]} ]]
+        then
+                number=${count[index+1]}
+                record=$((index+1))
+        fi
+((index++))
+done
+case $record in
+
+        1)
+                echo "Head_Head_Head comes most of the time"
+                ;;
+        2)
+                echo "Head_Head_Tail comes most of the time"
+                ;;
+        3)
+                echo "Head_Tail_Head comes most of the time"
+                ;;
+        4)
+                echo "Head_Tail_Tail comes most of the time"
+                ;;
+        5)
+                echo "Tail_Head_Head comes most of the time"
+                ;;
+        6)
+                echo "Tail_Head_Tail comes most of the time"
+                ;;
+        7)
+                echo "Tail_Tail_Head comes most of the time"
+                ;;
+        8)
+                echo "Tail_Tail_Tail comes most of the time"
+                ;;
+        *)
+                ;;
+esac
+
+index=11
+record=$index
+number=${count[index]}
+while [[ $index -le 13 ]]
+do
+
+        if [[ number -lt ${count[index+1]} ]]
+        then
+                number=${count[index+1]}
+                record=$(($index+1))
+        fi
+((index++))
+done
+case $record in
+
+        11)
+                echo "Head_Head comes most of the time"
+                ;;
+        12)
+                echo "Head_Tail comes most of the time"
+                ;;
+        13)
+                echo "Tail_Head comes most of the time"
+                ;;
+        14)
+                echo "Tail_Tail comes most of the time"
+                ;;
+        *)
+                ;;
+esac
+
+if [[ ${count[9]} -gt ${count[10]} ]]
+then
+        echo "Head comes most of the time"
+else
+        echo "Tail comes most of the time"
+fi
+
