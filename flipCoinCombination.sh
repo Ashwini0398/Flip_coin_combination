@@ -1,7 +1,7 @@
 #! /bin/bash -x
 
 
-echo -e "Please chosse  the \n 1.Head \n 2.Tail "
+echo -e "Display combination of head and tail "
 
 cointoss1=$((RANDOM%2))
 
